@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "./build.bat",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        { 
+            "label": "stop emulation",
+            "type":"shell",
+            "windows": {
+                "command":"taskkill /im mGBA.exe /F"
+            },
+            "osx": {
+                "command": "killall mGBA"
+            }
+        },
+        {
+            "label": "gdb-debug",
+            "type": "shell",
+            "isBackground": false,
+            "windows": {
+                "command": "C:\\mGBA\\mGBA.exe -g ${workspaceFolder}/building/a.gba"
+                // "args": [ "${workspaceFolder}/building/a.gba"]
+            },
+            "presentation": {
+                "clear": true,
+                "reveal": "always",
+                "panel": "shared"
+            },
+        },
+    ]
+}
